@@ -53,17 +53,145 @@
         
         #cat {
             position: absolute;
-            width: 120px;
-            height: 100px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23FFA726"/><circle cx="35" cy="40" r="10" fill="white"/><circle cx="65" cy="40" r="10" fill="white"/><circle cx="35" cy="40" r="5" fill="black"/><circle cx="65" cy="40" r="5" fill="black"/><path d="M50 60 Q60 70 70 60 Q60 65 50 60 Q40 65 30 60 Q40 70 50 60Z" fill="black"/><path d="M20 30 Q15 15 30 20 Q25 10 40 15 Q35 5 50 10 Q65 5 60 15 Q75 10 70 20 Q85 15 80 30 L75 35 L70 30 L65 35 L60 30 L55 35 L50 30 L45 35 L40 30 L35 35 L30 30 L25 35 Z" fill="%23FFA726"/><path d="M15 45 Q5 35 10 25 Q0 30 5 40 Q-5 35 15 45Z" fill="%23FFA726"/><path d="M85 45 Q95 35 90 25 Q100 30 95 40 Q105 35 85 45Z" fill="%23FFA726"/></svg>');
-            background-repeat: no-repeat;
-            background-size: contain;
+            width: 150px;
+            height: 130px;
             cursor: pointer;
             transition: transform 0.2s;
             z-index: 10;
         }
         
-        #cat.tail-wagging {
+        /* Vẽ chú mèo chi tiết bằng CSS */
+        .cat-body {
+            position: absolute;
+            width: 100px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ffa726, #fb8c00);
+            border-radius: 50% 50% 40% 40%;
+            top: 50px;
+            left: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .cat-head {
+            position: absolute;
+            width: 70px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ffa726, #fb8c00);
+            border-radius: 50%;
+            top: 30px;
+            left: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .cat-ear {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid #ffa726;
+            z-index: -1;
+        }
+        
+        .cat-ear-left {
+            top: 20px;
+            left: 35px;
+            transform: rotate(-30deg);
+        }
+        
+        .cat-ear-right {
+            top: 20px;
+            left: 85px;
+            transform: rotate(30deg);
+        }
+        
+        .cat-eye {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            top: 45px;
+            animation: blink 5s infinite;
+        }
+        
+        .cat-eye-left {
+            left: 50px;
+        }
+        
+        .cat-eye-right {
+            left: 90px;
+        }
+        
+        .cat-pupil {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #000;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: all 0.2s;
+        }
+        
+        .cat-nose {
+            position: absolute;
+            width: 12px;
+            height: 8px;
+            background-color: #ff6d6d;
+            border-radius: 50%;
+            top: 60px;
+            left: 69px;
+        }
+        
+        .cat-mouth {
+            position: absolute;
+            width: 15px;
+            height: 8px;
+            border-bottom: 2px solid #000;
+            border-radius: 0 0 50% 50%;
+            top: 68px;
+            left: 67px;
+        }
+        
+        .cat-tail {
+            position: absolute;
+            width: 50px;
+            height: 15px;
+            background: linear-gradient(to bottom, #ffa726, #fb8c00);
+            border-radius: 0 10px 10px 0;
+            top: 70px;
+            left: 0;
+            transform-origin: left center;
+            transition: transform 0.3s;
+        }
+        
+        .cat-paw {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffa726;
+            border-radius: 50%;
+            bottom: 0;
+        }
+        
+        .cat-paw-front-left {
+            left: 35px;
+        }
+        
+        .cat-paw-front-right {
+            left: 95px;
+        }
+        
+        .cat-paw-back-left {
+            left: 15px;
+        }
+        
+        .cat-paw-back-right {
+            left: 115px;
+        }
+        
+        #cat.tail-wagging .cat-tail {
             animation: tailWag 0.5s infinite alternate;
         }
         
@@ -160,9 +288,14 @@
             50% { transform: translateY(-10px); }
         }
         
+        @keyframes blink {
+            0%, 40%, 80%, 100% { height: 12px; }
+            20%, 60% { height: 2px; top: 50px; }
+        }
+        
         @keyframes tailWag {
-            0% { transform: rotate(-5deg); }
-            100% { transform: rotate(5deg); }
+            0% { transform: rotate(-20deg); }
+            100% { transform: rotate(20deg); }
         }
         
         @keyframes purr {
@@ -201,7 +334,21 @@
     
     <div class="container">
         <div class="cat-container" id="cat-container">
-            <div id="cat"></div>
+            <div id="cat">
+                <div class="cat-tail"></div>
+                <div class="cat-body"></div>
+                <div class="cat-head"></div>
+                <div class="cat-ear cat-ear-left"></div>
+                <div class="cat-ear cat-ear-right"></div>
+                <div class="cat-eye cat-eye-left"><div class="cat-pupil"></div></div>
+                <div class="cat-eye cat-eye-right"><div class="cat-pupil"></div></div>
+                <div class="cat-nose"></div>
+                <div class="cat-mouth"></div>
+                <div class="cat-paw cat-paw-front-left"></div>
+                <div class="cat-paw cat-paw-front-right"></div>
+                <div class="cat-paw cat-paw-back-left"></div>
+                <div class="cat-paw cat-paw-back-right"></div>
+            </div>
             <div class="toys" id="yarn"></div>
             <div class="toys" id="fish"></div>
         </div>
@@ -230,6 +377,7 @@
             const happinessEl = document.getElementById('happiness');
             const hungerEl = document.getElementById('hunger');
             const energyEl = document.getElementById('energy');
+            const pupils = document.querySelectorAll('.cat-pupil');
             
             let happiness = 50;
             let hunger = 50;
@@ -238,8 +386,8 @@
             let footprints = [];
             
             // Initialize cat position
-            let catX = catContainer.offsetWidth / 2 - 60;
-            let catY = catContainer.offsetHeight / 2 - 50;
+            let catX = catContainer.offsetWidth / 2 - 75;
+            let catY = catContainer.offsetHeight / 2 - 65;
             updateCatPosition();
             
             // Initialize toys position
@@ -270,6 +418,22 @@
                 toy.style.left = `${randomX}px`;
                 toy.style.bottom = `${randomY}px`;
             }
+            
+            // Update pupils to follow mouse/cursor
+            document.addEventListener('mousemove', function(e) {
+                const containerRect = catContainer.getBoundingClientRect();
+                const catRect = cat.getBoundingClientRect();
+                
+                const catCenterX = catRect.left + catRect.width / 2;
+                const catCenterY = catRect.top + catRect.height / 2;
+                
+                const angleX = (e.clientX - catCenterX) / window.innerWidth * 20;
+                const angleY = (e.clientY - catCenterY) / window.innerHeight * 20;
+                
+                pupils.forEach(pupil => {
+                    pupil.style.transform = `translate(${angleX}px, ${angleY}px)`;
+                });
+            });
             
             // Show message bubble
             function showMessage(text, x, y) {
@@ -324,8 +488,8 @@
             function moveCatRandomly() {
                 if (catState !== 'idle') return;
                 
-                const maxX = catContainer.offsetWidth - 120;
-                const maxY = catContainer.offsetHeight - 100;
+                const maxX = catContainer.offsetWidth - 150;
+                const maxY = catContainer.offsetHeight - 130;
                 
                 const newX = Math.floor(Math.random() * maxX);
                 const newY = Math.floor(Math.random() * maxY);
@@ -376,7 +540,7 @@
                 
                 // If energy is too low, cat becomes tired
                 if (energy < 20) {
-                    showMessage(catX, catY, "Zzz...");
+                    showMessage("Zzz...", catX, catY);
                 }
             }, 5000);
             
@@ -479,8 +643,8 @@
                 energy = 50;
                 updateStats();
                 
-                catX = catContainer.offsetWidth / 2 - 60;
-                catY = catContainer.offsetHeight / 2 - 50;
+                catX = catContainer.offsetWidth / 2 - 75;
+                catY = catContainer.offsetHeight / 2 - 65;
                 updateCatPosition();
                 
                 showMessage("I'm refreshed!", catX, catY);
@@ -506,8 +670,8 @@
                 let newY = containerRect.height - (e.clientY - containerRect.top - dragOffsetY);
                 
                 // Constrain to container
-                newX = Math.max(0, Math.min(catContainer.offsetWidth - 120, newX));
-                newY = Math.max(0, Math.min(catContainer.offsetHeight - 100, newY));
+                newX = Math.max(0, Math.min(catContainer.offsetWidth - 150, newX));
+                newY = Math.max(0, Math.min(catContainer.offsetHeight - 130, newY));
                 
                 catX = newX;
                 catY = newY;
@@ -553,8 +717,8 @@
                 let newY = containerRect.height - (touch.clientY - containerRect.top - dragOffsetY);
                 
                 // Constrain to container
-                newX = Math.max(0, Math.min(catContainer.offsetWidth - 120, newX));
-                newY = Math.max(0, Math.min(catContainer.offsetHeight - 100, newY));
+                newX = Math.max(0, Math.min(catContainer.offsetWidth - 150, newX));
+                newY = Math.max(0, Math.min(catContainer.offsetHeight - 130, newY));
                 
                 catX = newX;
                 catY = newY;
