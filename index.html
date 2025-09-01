@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,765 +10,575 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-```
-    body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        overflow-x: hidden;
-        color: white;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .header {
-        margin-bottom: 50px;
-        animation: fadeInDown 1s ease-out;
-    }
-
-    .header h1 {
-        font-size: 3em;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        font-weight: 300;
-        letter-spacing: 3px;
-    }
-
-    .header p {
-        font-size: 1.2em;
-        opacity: 0.9;
-    }
-
-    .cat-playground {
-        position: relative;
-        height: 400px;
-        margin: 50px 0;
-        border-radius: 20px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.2);
-        overflow: hidden;
-    }
-
-    .cat {
-        position: absolute;
-        cursor: pointer;
-        user-select: none;
-        transition: all 0.3s ease;
-        z-index: 10;
-        transform-origin: center bottom;
-    }
-
-    .cat:hover {
-        transform: scale(1.1);
-    }
-
-    .cat.jumping {
-        animation: jump 0.6s ease-in-out;
-    }
-
-    .cat.running {
-        animation: run 4s linear infinite;
-    }
-
-    /* CSS Cat Design */
-    .cat-body {
-        position: relative;
-        width: 80px;
-        height: 60px;
-    }
-
-    .cat-head {
-        position: absolute;
-        width: 50px;
-        height: 45px;
-        background: #ff9500;
-        border-radius: 50% 50% 45% 45%;
-        top: -25px;
-        left: 15px;
-        z-index: 2;
-    }
-
-    .cat-ears {
-        position: absolute;
-        top: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cat-ear-left, .cat-ear-right {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-left: 12px solid transparent;
-        border-right: 12px solid transparent;
-        border-bottom: 20px solid #ff9500;
-    }
-
-    .cat-ear-left {
-        left: -20px;
-        transform: rotate(-10deg);
-    }
-
-    .cat-ear-right {
-        right: -20px;
-        transform: rotate(10deg);
-    }
-
-    .cat-ear-inner-left, .cat-ear-inner-right {
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 10px solid #ffb347;
-        top: 8px;
-    }
-
-    .cat-ear-inner-left {
-        left: -6px;
-    }
-
-    .cat-ear-inner-right {
-        right: -6px;
-    }
-
-    .cat-eyes {
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cat-eye-left, .cat-eye-right {
-        position: absolute;
-        width: 8px;
-        height: 12px;
-        background: #2ecc71;
-        border-radius: 50%;
-        animation: blink 3s infinite;
-    }
-
-    .cat-eye-left {
-        left: -12px;
-    }
-
-    .cat-eye-right {
-        right: -12px;
-    }
-
-    .cat-nose {
-        position: absolute;
-        width: 6px;
-        height: 4px;
-        background: #e74c3c;
-        border-radius: 50%;
-        top: 18px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cat-mouth {
-        position: absolute;
-        top: 25px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cat-mouth::before, .cat-mouth::after {
-        content: '';
-        position: absolute;
-        width: 8px;
-        height: 6px;
-        border: 2px solid #333;
-        border-top: none;
-        border-radius: 0 0 50px 50px;
-    }
-
-    .cat-mouth::before {
-        left: -10px;
-    }
-
-    .cat-mouth::after {
-        right: -10px;
-    }
-
-    .cat-whiskers {
-        position: absolute;
-        top: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cat-whisker {
-        position: absolute;
-        width: 25px;
-        height: 1px;
-        background: #333;
-    }
-
-    .cat-whisker-1 { left: -40px; top: 0; transform: rotate(-10deg); }
-    .cat-whisker-2 { left: -40px; top: 5px; }
-    .cat-whisker-3 { left: -40px; top: 10px; transform: rotate(10deg); }
-    .cat-whisker-4 { right: -40px; top: 0; transform: rotate(10deg); }
-    .cat-whisker-5 { right: -40px; top: 5px; }
-    .cat-whisker-6 { right: -40px; top: 10px; transform: rotate(-10deg); }
-
-    .cat-torso {
-        position: absolute;
-        width: 60px;
-        height: 40px;
-        background: #ff9500;
-        border-radius: 30px 30px 20px 20px;
-        top: 15px;
-        left: 10px;
-    }
-
-    .cat-legs {
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .cat-leg {
-        position: absolute;
-        width: 8px;
-        height: 15px;
-        background: #ff9500;
-        border-radius: 0 0 10px 10px;
-    }
-
-    .cat-leg-1 { left: -25px; }
-    .cat-leg-2 { left: -10px; }
-    .cat-leg-3 { right: -10px; }
-    .cat-leg-4 { right: -25px; }
-
-    .cat-tail {
-        position: absolute;
-        width: 40px;
-        height: 8px;
-        background: #ff9500;
-        border-radius: 10px;
-        right: -35px;
-        top: 25px;
-        transform-origin: left center;
-        animation: tailWag 1.5s ease-in-out infinite alternate;
-    }
-
-    .yarn-ball {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: #ff6b6b;
-        cursor: pointer;
-        animation: bounce 2s infinite;
-    }
-
-    .yarn-ball:hover {
-        background: #ff5252;
-        transform: scale(1.1);
-    }
-
-    .controls {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 30px 0;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        padding: 12px 24px;
-        border: none;
-        border-radius: 25px;
-        background: rgba(255,255,255,0.2);
-        color: white;
-        font-size: 1em;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    .btn:hover {
-        background: rgba(255,255,255,0.3);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin: 40px 0;
-    }
-
-    .stat-card {
-        background: rgba(255,255,255,0.1);
-        padding: 20px;
-        border-radius: 15px;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.2);
-        animation: fadeInUp 1s ease-out;
-    }
-
-    .stat-number {
-        font-size: 2.5em;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #ffd700;
-    }
-
-    .message {
-        background: rgba(255,255,255,0.15);
-        padding: 15px;
-        border-radius: 10px;
-        margin: 20px 0;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.3);
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-    }
-
-    .message.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .paw-prints {
-        position: absolute;
-        pointer-events: none;
-        z-index: 5;
-    }
-
-    .paw-print {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        opacity: 0;
-        animation: pawFade 3s ease-out forwards;
-    }
-
-    .floating-hearts {
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-    }
-
-    .heart {
-        position: absolute;
-        color: #ff69b4;
-        font-size: 1.5em;
-        animation: floatUp 3s ease-out forwards;
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-50px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(50px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes jump {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-60px) rotate(15deg); }
-    }
-
-    @keyframes run {
-        0% { 
-            transform: translateX(-100px) scaleX(1);
-            left: 0;
+        
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
-        25% { 
-            transform: translateX(0) scaleX(1);
-            left: 25%;
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #FF9800;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        50% { 
-            transform: translateX(0) scaleX(-1);
-            left: 75%;
+        
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
         }
-        75% { 
-            transform: translateX(0) scaleX(-1);
-            left: 50%;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
         }
-        100% { 
-            transform: translateX(-100px) scaleX(1);
-            left: 0;
+        
+        .cat-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            margin: 20px auto;
+            border: 3px dashed #FF9800;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            overflow: hidden;
         }
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
-
-    @keyframes pawFade {
-        0% { opacity: 0.7; transform: scale(0); }
-        50% { opacity: 0.5; transform: scale(1); }
-        100% { opacity: 0; transform: scale(0.5); }
-    }
-
-    @keyframes floatUp {
-        0% { opacity: 1; transform: translateY(0) rotate(0deg); }
-        100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
-    }
-
-    @keyframes blink {
-        0%, 90%, 100% { height: 12px; }
-        95% { height: 2px; }
-    }
-
-    @keyframes tailWag {
-        0% { transform: rotate(-20deg); }
-        100% { transform: rotate(20deg); }
-    }
-
-    .cat.happy .cat-tail {
-        animation: tailWag 0.5s ease-in-out infinite alternate;
-    }
-
-    .cat.sleepy .cat-eye-left,
-    .cat.sleepy .cat-eye-right {
-        height: 3px;
-        background: #27ae60;
-    }
-
-    @media (max-width: 768px) {
-        .header h1 { font-size: 2em; }
-        .cat-body { transform: scale(0.8); }
-        .controls { flex-direction: column; align-items: center; }
-        .btn { width: 200px; }
-    }
-</style>
-```
-
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>meow</h1>
-            <p>Meow Meow!</p>
-        </div>
-
-```
-    <div class="cat-playground" id="playground">
-        <div class="cat" id="cat">
-            <div class="cat-body">
-                <div class="cat-head">
-                    <div class="cat-ears">
-                        <div class="cat-ear-left">
-                            <div class="cat-ear-inner-left"></div>
-                        </div>
-                        <div class="cat-ear-right">
-                            <div class="cat-ear-inner-right"></div>
-                        </div>
-                    </div>
-                    <div class="cat-eyes">
-                        <div class="cat-eye-left"></div>
-                        <div class="cat-eye-right"></div>
-                    </div>
-                    <div class="cat-nose"></div>
-                    <div class="cat-mouth"></div>
-                    <div class="cat-whiskers">
-                        <div class="cat-whisker cat-whisker-1"></div>
-                        <div class="cat-whisker cat-whisker-2"></div>
-                        <div class="cat-whisker cat-whisker-3"></div>
-                        <div class="cat-whisker cat-whisker-4"></div>
-                        <div class="cat-whisker cat-whisker-5"></div>
-                        <div class="cat-whisker cat-whisker-6"></div>
-                    </div>
-                </div>
-                <div class="cat-torso"></div>
-                <div class="cat-legs">
-                    <div class="cat-leg cat-leg-1"></div>
-                    <div class="cat-leg cat-leg-2"></div>
-                    <div class="cat-leg cat-leg-3"></div>
-                    <div class="cat-leg cat-leg-4"></div>
-                </div>
-                <div class="cat-tail"></div>
-            </div>
-        </div>
-        <div class="yarn-ball" id="yarnBall" style="top: 50px; right: 50px;">🧶</div>
-        <div class="paw-prints" id="pawPrints"></div>
-    </div>
-
-    <div class="controls">
-        <button class="btn" onclick="makeCatJump()">🦘 Jump</button>
-        <button class="btn" onclick="makeCatRun()">🏃 Run</button>
-        <button class="btn" onclick="feedCat()">🐟 Feed</button>
-        <button class="btn" onclick="petCat()">❤️ Pet</button>
-        <button class="btn" onclick="playCatchYarn()">🎯 Catch Yarn</button>
-        <button class="btn" onclick="changeCatMood()">😸 Change Mood</button>
-    </div>
-
-    <div class="stats">
-        <div class="stat-card">
-            <div class="stat-number" id="happinessLevel">85</div>
-            <div>Happiness (%)</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="playCount">0</div>
-            <div>Play Count</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="foodCount">0</div>
-            <div>Fed Times</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-number" id="petCount">0</div>
-            <div>Pet Count</div>
-        </div>
-    </div>
-
-    <div class="message" id="messageBox">
-        Hello! I'm a playful kitty. Let's play together! 🐾
-    </div>
-</div>
-
-<div class="floating-hearts" id="floatingHearts"></div>
-
-<script>
-    let cat = document.getElementById('cat');
-    let playground = document.getElementById('playground');
-    let messageBox = document.getElementById('messageBox');
-    let yarnBall = document.getElementById('yarnBall');
-    let pawPrints = document.getElementById('pawPrints');
-    let floatingHearts = document.getElementById('floatingHearts');
-
-    let gameState = {
-        happiness: 85,
-        playCount: 0,
-        foodCount: 0,
-        petCount: 0,
-        currentMood: 'normal',
-        messages: [
-            "Meow meow! I'm so happy! 😸",
-            "Thank you for playing with me! 🎉",
-            "I'm getting hungry... 🐟",
-            "Please pet me! ❤️",
-            "Wowww! That's awesome! 🌟",
-            "I love you! 💕",
-            "Let's play more! 🎯",
-            "Meow meow meow! 🎵",
-            "Purrrr... so cozy! 😴",
-            "Catch me if you can! 🏃"
-        ]
-    };
-
-    // Show initial message
-    setTimeout(() => {
-        messageBox.classList.add('show');
-    }, 500);
-
-    function updateStats() {
-        document.getElementById('happinessLevel').textContent = gameState.happiness;
-        document.getElementById('playCount').textContent = gameState.playCount;
-        document.getElementById('foodCount').textContent = gameState.foodCount;
-        document.getElementById('petCount').textContent = gameState.petCount;
-    }
-
-    function showMessage(text) {
-        messageBox.textContent = text;
-        messageBox.classList.remove('show');
-        setTimeout(() => {
-            messageBox.classList.add('show');
-        }, 100);
-    }
-
-    function createPawPrint(x, y) {
-        let paw = document.createElement('div');
-        paw.className = 'paw-print';
-        paw.textContent = '🐾';
-        paw.style.left = x + 'px';
-        paw.style.top = y + 'px';
-        pawPrints.appendChild(paw);
-
-        setTimeout(() => {
-            paw.remove();
-        }, 3000);
-    }
-
-    function createFloatingHeart(x, y) {
-        let heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.textContent = '💕';
-        heart.style.left = x + 'px';
-        heart.style.top = y + 'px';
-        floatingHearts.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 3000);
-    }
-
-    function makeCatJump() {
-        cat.classList.add('jumping');
-        gameState.playCount++;
-        gameState.happiness = Math.min(100, gameState.happiness + 5);
         
-        let rect = cat.getBoundingClientRect();
-        createPawPrint(rect.left, rect.top + 80);
+        #cat {
+            position: absolute;
+            width: 120px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23FFA726"/><circle cx="35" cy="40" r="10" fill="white"/><circle cx="65" cy="40" r="10" fill="white"/><circle cx="35" cy="40" r="5" fill="black"/><circle cx="65" cy="40" r="5" fill="black"/><path d="M50 60 Q60 70 70 60 Q60 65 50 60 Q40 65 30 60 Q40 70 50 60Z" fill="black"/><path d="M20 30 Q15 15 30 20 Q25 10 40 15 Q35 5 50 10 Q65 5 60 15 Q75 10 70 20 Q85 15 80 30 L75 35 L70 30 L65 35 L60 30 L55 35 L50 30 L45 35 L40 30 L35 35 L30 30 L25 35 Z" fill="%23FFA726"/><path d="M15 45 Q5 35 10 25 Q0 30 5 40 Q-5 35 15 45Z" fill="%23FFA726"/><path d="M85 45 Q95 35 90 25 Q100 30 95 40 Q105 35 85 45Z" fill="%23FFA726"/></svg>');
+            background-repeat: no-repeat;
+            background-size: contain;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 10;
+        }
         
-        showMessage(gameState.messages[Math.floor(Math.random() * gameState.messages.length)]);
-        updateStats();
+        #cat.tail-wagging {
+            animation: tailWag 0.5s infinite alternate;
+        }
         
-        setTimeout(() => {
-            cat.classList.remove('jumping');
-        }, 600);
-    }
-
-    function makeCatRun() {
-        cat.classList.add('running');
-        gameState.playCount++;
-        gameState.happiness = Math.min(100, gameState.happiness + 8);
+        #cat.purring {
+            animation: purr 0.1s infinite alternate;
+        }
         
-        showMessage("Zoom zoom! I'm fast like the wind! 💨");
-        updateStats();
+        #cat.jumping {
+            animation: jump 0.5s alternate;
+        }
         
-        setTimeout(() => {
-            cat.classList.remove('running');
-        }, 4000);
-    }
-
-    function feedCat() {
-        gameState.foodCount++;
-        gameState.happiness = Math.min(100, gameState.happiness + 10);
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
         
-        cat.style.transform = 'scale(1.2)';
-        showMessage("Nom nom nom! So delicious! 😋🐟");
-        updateStats();
+        button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
         
-        setTimeout(() => {
-            cat.style.transform = 'scale(1)';
-        }, 1000);
-    }
-
-    function petCat() {
-        gameState.petCount++;
-        gameState.happiness = Math.min(100, gameState.happiness + 15);
+        button:hover {
+            background-color: #F57C00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
         
-        let rect = cat.getBoundingClientRect();
-        createFloatingHeart(rect.left + 30, rect.top);
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
         
-        cat.classList.add('happy');
-        cat.style.filter = 'brightness(1.3)';
-        showMessage("Purrrr... I love you! 💕");
-        updateStats();
+        .stat-item {
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            min-width: 150px;
+        }
         
-        setTimeout(() => {
-            cat.style.filter = 'brightness(1)';
-            cat.classList.remove('happy');
-        }, 2000);
-    }
-
-    function playCatchYarn() {
-        gameState.playCount++;
-        gameState.happiness = Math.min(100, gameState.happiness + 12);
+        .toys {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
         
-        // Move yarn ball
-        let randomX = Math.random() * (playground.offsetWidth - 50);
-        let randomY = Math.random() * (playground.offsetHeight - 50);
-        yarnBall.style.left = randomX + 'px';
-        yarnBall.style.top = randomY + 'px';
+        #yarn {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23E91E63"/><path d="M30 30 Q50 10 70 30 Q90 50 70 70 Q50 90 30 70 Q10 50 30 30Z" fill="white" opacity="0.7"/></svg>');
+        }
         
-        // Move cat towards yarn ball
-        setTimeout(() => {
-            cat.style.left = (randomX - 40) + 'px';
-            cat.style.top = (randomY - 40) + 'px';
-            createPawPrint(randomX - 40, randomY + 20);
-        }, 200);
+        #fish {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M80 50 Q100 30 90 10 Q70 30 80 50 Q100 70 90 90 Q70 70 80 50Z" fill="%23009688"/><circle cx="85" cy="45" r="5" fill="white"/><circle cx="87" cy="43" r="2" fill="black"/><path d="M70 40 L60 50 L70 60 Z" fill="%23009688"/></svg>');
+        }
         
-        showMessage("Gotcha! I caught the yarn ball! 🎯");
-        updateStats();
-    }
-
-    function changeCatMood() {
-        const moods = ['normal', 'happy', 'sleepy'];
-        const currentIndex = moods.indexOf(gameState.currentMood);
-        const nextIndex = (currentIndex + 1) % moods.length;
+        .message {
+            position: absolute;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
         
-        // Remove all mood classes
-        moods.forEach(mood => cat.classList.remove(mood));
+        .footprints {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="30" r="20" fill="rgba(0,0,0,0.2)"/><circle cx="70" cy="30" r="15" fill="rgba(0,0,0,0.2)"/><circle cx="30" cy="70" r="15" fill="rgba(0,0,0,0.2)"/><circle cx="70" cy="70" r="20" fill="rgba(0,0,0,0.2)"/></svg>');
+            background-size: contain;
+            opacity: 0;
+            pointer-events: none;
+        }
         
-        // Add new mood
-        gameState.currentMood = moods[nextIndex];
-        cat.classList.add(gameState.currentMood);
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
         
-        const moodMessages = {
-            'normal': "I'm feeling normal and playful!",
-            'happy': "I'm super happy and excited!",
-            'sleepy': "Yawn... I'm getting a bit sleepy..."
-        };
+        @keyframes tailWag {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
         
-        showMessage(moodMessages[gameState.currentMood]);
-    }
-
-    // Random cat movement
-    function randomCatMovement() {
-        if (!cat.classList.contains('running')) {
-            let maxX = playground.offsetWidth - 100;
-            let maxY = playground.offsetHeight - 100;
-            let randomX = Math.random() * maxX;
-            let randomY = Math.random() * maxY;
+        @keyframes purr {
+            0% { transform: translateX(-2px); }
+            100% { transform: translateX(2px); }
+        }
+        
+        @keyframes jump {
+            0% { bottom: 0; }
+            50% { bottom: 100px; }
+            100% { bottom: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
             
-            cat.style.left = randomX + 'px';
-            cat.style.top = randomY + 'px';
-            cat.style.transition = 'all 2s ease';
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
             
-            createPawPrint(randomX + 20, randomY + 80);
-        }
-    }
-
-    // Click events
-    cat.addEventListener('click', function() {
-        makeCatJump();
-    });
-
-    yarnBall.addEventListener('click', function() {
-        playCatchYarn();
-    });
-
-    // Initial position
-    cat.style.left = '50%';
-    cat.style.top = '50%';
-    cat.style.transform = 'translate(-50%, -50%)';
-
-    // Random movement every 6 seconds
-    setInterval(randomCatMovement, 6000);
-
-    // Random messages every 12 seconds
-    setInterval(() => {
-        if (Math.random() > 0.5) {
-            showMessage(gameState.messages[Math.floor(Math.random() * gameState.messages.length)]);
-        }
-    }, 12000);
-
-    // Decrease happiness over time
-    setInterval(() => {
-        if (gameState.happiness > 0) {
-            gameState.happiness = Math.max(0, gameState.happiness - 1);
-            updateStats();
-            
-            if (gameState.happiness < 30) {
-                showMessage("I'm feeling a bit sad... Play with me! 😿");
+            .cat-container {
+                height: 50vh;
             }
         }
-    }, 30000);
-</script>
-```
+    </style>
+</head>
+<body>
+    <header>
+        <h1>meow</h1>
+        <p>Interact with the mischievous cat!</p>
+    </header>
+    
+    <div class="container">
+        <div class="cat-container" id="cat-container">
+            <div id="cat"></div>
+            <div class="toys" id="yarn"></div>
+            <div class="toys" id="fish"></div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">Happiness: <span id="happiness">50</span></div>
+            <div class="stat-item">Hunger: <span id="hunger">50</span></div>
+            <div class="stat-item">Energy: <span id="energy">50</span></div>
+        </div>
+        
+        <div class="controls">
+            <button id="btn-pet">Pet</button>
+            <button id="btn-feed">Feed</button>
+            <button id="btn-play">Play with Toys</button>
+            <button id="btn-meow">Make Meow</button>
+            <button id="btn-reset">Reset Cat</button>
+        </div>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cat = document.getElementById('cat');
+            const catContainer = document.getElementById('cat-container');
+            const yarn = document.getElementById('yarn');
+            const fish = document.getElementById('fish');
+            const happinessEl = document.getElementById('happiness');
+            const hungerEl = document.getElementById('hunger');
+            const energyEl = document.getElementById('energy');
+            
+            let happiness = 50;
+            let hunger = 50;
+            let energy = 50;
+            let catState = 'idle';
+            let footprints = [];
+            
+            // Initialize cat position
+            let catX = catContainer.offsetWidth / 2 - 60;
+            let catY = catContainer.offsetHeight / 2 - 50;
+            updateCatPosition();
+            
+            // Initialize toys position
+            updateToyPosition(yarn);
+            updateToyPosition(fish);
+            
+            // Update stats display
+            function updateStats() {
+                happinessEl.textContent = happiness;
+                hungerEl.textContent = hunger;
+                energyEl.textContent = energy;
+            }
+            
+            // Update cat position
+            function updateCatPosition() {
+                cat.style.left = `${catX}px`;
+                cat.style.bottom = `${catY}px`;
+            }
+            
+            // Update toy position
+            function updateToyPosition(toy) {
+                const maxX = catContainer.offsetWidth - 60;
+                const maxY = catContainer.offsetHeight - 60;
+                
+                const randomX = Math.floor(Math.random() * maxX);
+                const randomY = Math.floor(Math.random() * maxY);
+                
+                toy.style.left = `${randomX}px`;
+                toy.style.bottom = `${randomY}px`;
+            }
+            
+            // Show message bubble
+            function showMessage(text, x, y) {
+                const message = document.createElement('div');
+                message.className = 'message';
+                message.textContent = text;
+                message.style.left = `${x}px`;
+                message.style.bottom = `${y + 100}px`;
+                
+                catContainer.appendChild(message);
+                
+                // Show message
+                setTimeout(() => {
+                    message.style.opacity = 1;
+                }, 10);
+                
+                // Hide message after delay
+                setTimeout(() => {
+                    message.style.opacity = 0;
+                    setTimeout(() => {
+                        catContainer.removeChild(message);
+                    }, 300);
+                }, 2000);
+            }
+            
+            // Create footprint
+            function createFootprint(x, y) {
+                if (Math.random() > 0.5) return; // Only create footprints sometimes
+                
+                const footprint = document.createElement('div');
+                footprint.className = 'footprints';
+                footprint.style.left = `${x + 30}px`;
+                footprint.style.bottom = `${y}px`;
+                footprint.style.opacity = 0.7;
+                
+                catContainer.appendChild(footprint);
+                footprints.push(footprint);
+                
+                // Fade out footprint
+                setTimeout(() => {
+                    footprint.style.opacity = 0;
+                    setTimeout(() => {
+                        if (footprint.parentNode) {
+                            catContainer.removeChild(footprint);
+                        }
+                        footprints = footprints.filter(f => f !== footprint);
+                    }, 2000);
+                }, 3000);
+            }
+            
+            // Move cat to a random position
+            function moveCatRandomly() {
+                if (catState !== 'idle') return;
+                
+                const maxX = catContainer.offsetWidth - 120;
+                const maxY = catContainer.offsetHeight - 100;
+                
+                const newX = Math.floor(Math.random() * maxX);
+                const newY = Math.floor(Math.random() * maxY);
+                
+                // Create footprints along the path
+                const steps = 10;
+                const stepX = (newX - catX) / steps;
+                const stepY = (newY - catY) / steps;
+                
+                let currentStep = 0;
+                const moveInterval = setInterval(() => {
+                    if (currentStep >= steps) {
+                        clearInterval(moveInterval);
+                        return;
+                    }
+                    
+                    catX += stepX;
+                    catY += stepY;
+                    updateCatPosition();
+                    
+                    if (currentStep % 2 === 0) {
+                        createFootprint(catX, catY);
+                    }
+                    
+                    currentStep++;
+                }, 100);
+                
+                // Update energy
+                energy = Math.max(0, energy - 5);
+                updateStats();
+            }
+            
+            // Auto move the cat every 5-10 seconds
+            setInterval(moveCatRandomly, 5000 + Math.random() * 5000);
+            
+            // Auto decrease stats over time
+            setInterval(() => {
+                happiness = Math.max(0, happiness - 2);
+                hunger = Math.min(100, hunger + 3);
+                energy = Math.max(0, energy - 1);
+                updateStats();
+                
+                // If hunger is too high, cat becomes unhappy
+                if (hunger > 80) {
+                    happiness = Math.max(0, happiness - 5);
+                    updateStats();
+                }
+                
+                // If energy is too low, cat becomes tired
+                if (energy < 20) {
+                    showMessage(catX, catY, "Zzz...");
+                }
+            }, 5000);
+            
+            // Pet button
+            document.getElementById('btn-pet').addEventListener('click', function() {
+                if (catState !== 'idle') return;
+                
+                catState = 'purring';
+                cat.classList.add('purring');
+                
+                happiness = Math.min(100, happiness + 10);
+                updateStats();
+                
+                showMessage("Purrrrr...", catX, catY);
+                
+                setTimeout(() => {
+                    cat.classList.remove('purring');
+                    catState = 'idle';
+                }, 2000);
+            });
+            
+            // Feed button
+            document.getElementById('btn-feed').addEventListener('click', function() {
+                if (catState !== 'idle') return;
+                
+                hunger = Math.max(0, hunger - 30);
+                happiness = Math.min(100, happiness + 5);
+                updateStats();
+                
+                showMessage("Yum! 🐟", catX, catY);
+                
+                // Make cat jump
+                catState = 'jumping';
+                cat.classList.add('jumping');
+                
+                setTimeout(() => {
+                    cat.classList.remove('jumping');
+                    catState = 'idle';
+                }, 1000);
+            });
+            
+            // Play button
+            document.getElementById('btn-play').addEventListener('click', function() {
+                if (catState !== 'idle') return;
+                
+                if (energy < 20) {
+                    showMessage("Too tired...", catX, catY);
+                    return;
+                }
+                
+                catState = 'playing';
+                updateToyPosition(yarn);
+                updateToyPosition(fish);
+                
+                happiness = Math.min(100, happiness + 15);
+                energy = Math.max(0, energy - 10);
+                updateStats();
+                
+                showMessage("Playtime!", catX, catY);
+                
+                // Move cat to a toy
+                const toys = [yarn, fish];
+                const randomToy = toys[Math.floor(Math.random() * toys.length)];
+                
+                const toyX = parseInt(randomToy.style.left);
+                const toyY = parseInt(randomToy.style.bottom);
+                
+                catX = toyX - 30;
+                catY = toyY - 30;
+                updateCatPosition();
+                
+                // Wag tail
+                cat.classList.add('tail-wagging');
+                
+                setTimeout(() => {
+                    cat.classList.remove('tail-wagging');
+                    catState = 'idle';
+                }, 2000);
+            });
+            
+            // Meow button
+            document.getElementById('btn-meow').addEventListener('click', function() {
+                if (catState !== 'idle') return;
+                
+                const meows = ["Meow!", "Purr!", "Mrow!", "Hiss!", "Prrt!"];
+                const randomMeow = meows[Math.floor(Math.random() * meows.length)];
+                
+                showMessage(randomMeow, catX, catY);
+                
+                // Randomly move after meowing
+                if (Math.random() > 0.5) {
+                    moveCatRandomly();
+                }
+            });
+            
+            // Reset button
+            document.getElementById('btn-reset').addEventListener('click', function() {
+                happiness = 50;
+                hunger = 50;
+                energy = 50;
+                updateStats();
+                
+                catX = catContainer.offsetWidth / 2 - 60;
+                catY = catContainer.offsetHeight / 2 - 50;
+                updateCatPosition();
+                
+                showMessage("I'm refreshed!", catX, catY);
+            });
+            
+            // Drag and drop for cat
+            let isDragging = false;
+            let dragOffsetX, dragOffsetY;
+            
+            cat.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                dragOffsetX = e.clientX - cat.getBoundingClientRect().left;
+                dragOffsetY = e.clientY - cat.getBoundingClientRect().top;
+                cat.style.cursor = 'grabbing';
+            });
+            
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                const containerRect = catContainer.getBoundingClientRect();
+                
+                let newX = e.clientX - containerRect.left - dragOffsetX;
+                let newY = containerRect.height - (e.clientY - containerRect.top - dragOffsetY);
+                
+                // Constrain to container
+                newX = Math.max(0, Math.min(catContainer.offsetWidth - 120, newX));
+                newY = Math.max(0, Math.min(catContainer.offsetHeight - 100, newY));
+                
+                catX = newX;
+                catY = newY;
+                updateCatPosition();
+                
+                // Create footprints while dragging
+                if (Math.random() > 0.7) {
+                    createFootprint(catX, catY);
+                }
+            });
+            
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    cat.style.cursor = 'grab';
+                    
+                    // After dragging, update stats
+                    energy = Math.max(0, energy - 5);
+                    happiness = Math.min(100, happiness + 5);
+                    updateStats();
+                    
+                    showMessage("Whee!", catX, catY);
+                }
+            });
+            
+            // Touch events for mobile
+            cat.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                isDragging = true;
+                const touch = e.touches[0];
+                dragOffsetX = touch.clientX - cat.getBoundingClientRect().left;
+                dragOffsetY = touch.clientY - cat.getBoundingClientRect().top;
+            });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const touch = e.touches[0];
+                const containerRect = catContainer.getBoundingClientRect();
+                
+                let newX = touch.clientX - containerRect.left - dragOffsetX;
+                let newY = containerRect.height - (touch.clientY - containerRect.top - dragOffsetY);
+                
+                // Constrain to container
+                newX = Math.max(0, Math.min(catContainer.offsetWidth - 120, newX));
+                newY = Math.max(0, Math.min(catContainer.offsetHeight - 100, newY));
+                
+                catX = newX;
+                catY = newY;
+                updateCatPosition();
+                
+                // Create footprints while dragging
+                if (Math.random() > 0.7) {
+                    createFootprint(catX, catY);
+                }
+            });
+            
+            document.addEventListener('touchend', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    
+                    // After dragging, update stats
+                    energy = Math.max(0, energy - 5);
+                    happiness = Math.min(100, happiness + 5);
+                    updateStats();
+                    
+                    showMessage("Whee!", catX, catY);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
